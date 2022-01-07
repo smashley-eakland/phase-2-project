@@ -3,9 +3,8 @@
 ### Contributors: Jalen Charles, Brad Blackwood, and Ashley Eakland
 ### Project Description: 
 
-![User Tool](./images/Screen Recording 2022-01-05 at 5.14.09 PM.gif) / ![](./images/Screen Recording 2022-01-05 at 5.14.09 PM.gif)
-
+![User Tool](https://github.com/smashley-eakland/phase-2-project/blob/Ashley/images/Screen%20Recording%202022-01-05%20at%205.14.09%20PM.gif)
 
 <video width="320" height="240" controls>
-  <source src="./images/interactive_map.mov" type="video/mp4">
+  <source src="https://github.com/smashley-eakland/phase-2-project/blob/Ashley/images/interactive_map.mov" type="video/mp4">
 </video>
