@@ -5,10 +5,13 @@
 
 <center> <h2> Contributors:  Brad Blackwood, Ashley Eakland and Jalen Charles </h2> </center>
 
-### Project Proposal: A user-friendly tool to predict pricing of homes using just a few key metrics, accomplished using multiple linear regression analysis.
+### Project Proposal: A user-friendly tool to predict pricing of homes using just a few key metrics, accomplished using multiple linear regression analysis. User interface and functionality of proposed tool shown below.
+
+![User Tool](./images/user_tool.gif)
 
 ### Business Understanding
 ##### Utilizing the CRISP-DM process, it is our goal with this project to present to both home buyers and sellers a user friendly tool to accurately predict the price of a home based on a few key metrics. The first step in this process is understanding the business, which in this case would be the consumer benefit of having a user friendly tool for home price predictions. Having an easily accessible and user friendly tool would enable the every day consumer to roughly estimate the price of a home without the need for extensive research or external support.
+
 ### Data Understanding and Preparation
 ##### For this analysis, and the second and third steps of the CRISP-DM process, we will gain a better understanding of our dataset. Being that this is a dataset of home sales data, it will be incredibly useful in the development of a home sales price prediction tool. Utilizing the column names and descriptions below, as well as the following code blocks, we discovered the following:
 
@@ -37,6 +40,9 @@
     * `sqft_lot15` - The square footage of the land lots of the nearest 15 neighbors
     
 * Preliminary analysis shows strongest correlation with prediction target feature (`price`) in the `sqft_living` column. This will be our focus feature.
+
+<center> <img src="./images/corr_heatmap1.png" alt="Correlation Heatmap" width="600"/> </center>
+
 * Null values are seen in few columns in this dataset, with affected columns only being `waterfront`, `view`, and `yr_renovated`. Further data analysis renders these columns irrelevant to our end goal of a simple tool with minimal user input, and thus no preparation or futher investigation into these nulls needed.
 * Zip Codes are targeted as an important predictor into a homes value - as they say, "location, location, location!". However, Zip Codes are categorical (or a discrete variable), and therefore need to be handled differently than a continuous variable in order to be modeled. We opted to utilize Pandas pd.get_dummies to One Hot Encode the Zip Codes. 
 * Grades are also determined to be a potentially valuable predictor but that is also discrete. We prepared this data utilizing OHE as well, should we decide to proceed with grades in a final model. It was decided to omit them as an everyday consumer may not be able to accurately "grade" their home on the grading scale of 1 to 13 and input that into the tool, and therefore may not be the best choice for the end product of this project if we are able to produce an accurate model without the grade feature.
@@ -62,7 +68,13 @@
         * Median: 2.25
         * Mode: 2.5
 
-* Lat/Long were used to plot the Zip Codes on an interactive map utilizing the Folium library, that then pulled in the median home price for that respective Zip Code. 
+<center> <img src="./images/Box_plots.png" alt="Boxplots Combined" width="600"/> </center>
+
+* Lat/Long were used to plot the Zip Codes on an interactive map utilizing the Folium library, that then pulled in the median home price for that respective Zip Code, shown below.
+
+![Interactive Map](./images/interactive_map.gif)
+
+
 * Data preparation is complete and ready for modeling.
 
 ### Modeling
