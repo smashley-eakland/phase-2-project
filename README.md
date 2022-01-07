@@ -77,9 +77,33 @@
 * Data preparation is complete and ready for modeling.
 
 ### Modeling
-* 
-* 
-* 
+
+The aims of our modeling process was to **maximize accuracy** while **minimizing the inputs**. Decreasing the complexity of the model helps to decrease colinearity and make for a better user experience of our product. We approach model development iteratively to identify the best features for our use case.
+Target feature - **Price**
+Key feature - **Squarefoot Living Space** (this was identified above with a correlation heat map)
+
+##### Complimentary features tested
+* Zipcodes
+* Bedrooms
+* Bathroom
+* Bedrooms/Bathroom
+* Bathrooms/Bedrooms
+* Grade
+
+##### Model Selected included Squarefootage, Zipcode, Bedrooms, and Bathrooms as features.
+We tested the our models graphically to determine its performance as it relates to its predicted price.
+* This showed that are model has a higher tendency for error as the actual price of the home is lower.
+* Most likely this is because other features of lower priced home are stronger predictors of its price. When using our model this is something to be aware of.
+* Our model is best at giving an initial estimate of home price and users should consider other means to confirm/increase confidence before purchasing/selling their home.
+
+##### Feature Impacts
+* The Squarefootage feature of our models suggest that price per square foot in King County is ~ \$275.
+* The Bathroom feature of our models suggest that price per bathroom in King County is ~ \$10,275.
+
+##### Future Improvements
+* Incorporating other commonly available home features (ie. parking, hoa, condition, heating/cooling, home type, neighborhood safety, school district) could potential increase the accuracy of the model.
+* Polynomial regression could also be experimented with using available data.
+* Using our what is known about our model accuracy we could also develope a function to suggest potential zipcodes that would meet a home specification in their desired budget.
 
 ### Regression Results - Final Model
 
@@ -94,9 +118,9 @@ In the below graphic, we have our model predictions represented on histograms. T
  
 * The coefficients that were used to account for the variance when looking for price were square foot living, number of bathrooms, number of bedrooms, and the zipcode the home was in (which was one hot encoded). Coefficient values for each are as follows:
 
-~   +/$275 per square foot living space
-~   +/$10,275 for each additional bathroom
-~   -/$47,700 for bedrooms
+    * +\$275 per square foot living space
+    * +\$10,275 for each additional bathroom
+    * \-$47,700 for bedrooms
 
 * Zip codes, while playing a big factor in price, led to a negatively correlated bedroom coefficient due to the pricing of expensive housing with a lesser bedroom being located in certain zip codes and cheaper houses with more bedrooms located in other zip codes. For example, downtown locations with high costs but smaller number of bedrooms, versus suburban homes that would have a higher number of bedrooms at a lower cost. A proximity scaler of some sort would be added in the future to combat this negative effect.  
 
