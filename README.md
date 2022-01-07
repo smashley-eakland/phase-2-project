@@ -74,7 +74,6 @@
 
 ![Interactive Map](./images/interactive_map.gif)
 
-
 * Data preparation is complete and ready for modeling.
 
 ### Modeling
@@ -83,4 +82,24 @@
 * 
 
 ### Regression Results - Final Model
-* 
+
+* This particular model was chosen due to the R2 of 74% which accounts for 74 percent of the variance of our model. RMSE ran around $185,000 on our testing data, which was significant. However, we did see that our model performs significantly better on the higher price range homes (at/above median) versus the lower priced homes as depicted below.
+
+<center> <img src="./images/model-error.png" alt="Model Error" width="600"/> </center>
+
+In the below graphic, we have our model predictions represented on histograms. The blue dotted line you see is a random sampled home sale value, and our model often is within the range of the sample sale price. We hope to dial this in with future analysis.
+
+<center> <img src="./images/Model-accuracy.png" alt="Model Predictions" width="600"/> </center>
+
+ 
+* The coefficients that were used to account for the variance when looking for price were square foot living, number of bathrooms, number of bedrooms, and the zipcode the home was in (which was one hot encoded). Coefficient values for each are as follows:
+
+~   +/$275 per square foot living space
+~   +/$10,275 for each additional bathroom
+~   -/$47,700 for bedrooms
+
+* Zip codes, while playing a big factor in price, led to a negatively correlated bedroom coefficient due to the pricing of expensive housing with a lesser bedroom being located in certain zip codes and cheaper houses with more bedrooms located in other zip codes. For example, downtown locations with high costs but smaller number of bedrooms, versus suburban homes that would have a higher number of bedrooms at a lower cost. A proximity scaler of some sort would be added in the future to combat this negative effect.  
+
+* While sqft living was the most correlated with our target, price, bathroom and bedroom where similarly correlated with each other which could lead to some colinearity in our model. We had run models to see how this affected performance with and without one or the other, but model performance was not severely impacted with removal of bedrooms or bathrooms. This would be worth exploring further in the future. For the purposes of the end-user tool, we decided to keep both features in the model to allow the user to specify both the number of bedrooms AND bathrooms in their inputs.
+   
+* In conclusion, the stakeholder should utilize the model with a descretion and utilize other sources as well when considering the price of a home. Future analysis would be centered around reducing the error by exploring the multicollinearity further between bedrooms and bathrooms, adding the aforementioned proximity scaler to account for downtown density price escalation, incorporating any missing King County zip codes, and potentially expanding the user interface to allow for running without all of the inputs, with the understanding that the accuracy of the prediction would be reduced. 
